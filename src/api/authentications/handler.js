@@ -61,9 +61,9 @@ class AuthenticationsHandler {
 
       const { refreshToken } = request.payload;
       await this._authenticationsService.verifyRefreshToken(refreshToken);
-      const { id } = this._tokenManager.verifyRefreshToken(refreshToken);
+      const { id } = await this._tokenManager.verifyRefreshToken(refreshToken);
 
-      const accessToken = this._tokenManager.generateAccessToken({ id });
+      const accessToken = await this._tokenManager.generateAccessToken({ id });
       return {
         status: 'success',
         message: 'Access Token berhasil diperbarui',
