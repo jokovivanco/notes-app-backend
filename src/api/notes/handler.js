@@ -9,7 +9,7 @@ class NotesHandler {
     this.getNotesHandler = this.getNotesHandler.bind(this);
     this.getNoteByIdHandler = this.getNoteByIdHandler.bind(this);
     this.putNoteByIdHandler = this.putNoteByIdHandler.bind(this);
-    this.deleteNotByIdHandler = this.deleteNotByIdHandler.bind(this);
+    this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
   }
 
   async postNoteHandler(request, h) {
@@ -119,10 +119,10 @@ class NotesHandler {
     }
   }
 
-  async deleteNotByIdHandler(request, h) {
+  async deleteNoteByIdHandler(request, h) {
     try {
       const { id } = request.params;
-      await this._service.deleteNotById(id);
+      await this._service.deleteNoteById(id);
       return {
         status: 'success',
         message: 'Catatan berhasil dihapus',
